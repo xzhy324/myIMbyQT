@@ -21,10 +21,12 @@ public:
 private:
     Ui::Widget *ui;
     QTcpSocket *clientSocket;
+    void sendMsg(QString msg);
 
 private slots:
     void recvMsg();
-    void sendMsg(QString msg);
     void on_sendButton_clicked();
+    void on_loginButton_clicked();
+    void on_registerButton_clicked();
 };
 #endif // WIDGET_H

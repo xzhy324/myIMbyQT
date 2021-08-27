@@ -33,9 +33,32 @@ void Widget::sendMsg(QString msg)
 void Widget::on_sendButton_clicked()
 {
     QString curInput = ui->inputEdit->toPlainText();
+    QString recieverName = ui->lineEdit_reciever->text();
     if(curInput!=""){
-        sendMsg(curInput);
+        if(recieverName==""){
+            QMessageBox::warning(NULL,"warning","the reciever cannot be empty!");
+        }else{
+            QString msg = "msg/"+recieverName+":"+curInput;
+            sendMsg(msg);
+        }
+
     }else{
         QMessageBox::warning(NULL,"warning","the msg cannot be empty!");
     }
+}
+
+void Widget::on_loginButton_clicked()
+{
+    QString username = ui->lineEdit_username->text();
+    QString pwd = ui->lineEdit_pwd->text();
+    QString msg = "log/" + username + ":" + pwd;
+    sendMsg(msg);
+}
+
+void Widget::on_registerButton_clicked()
+{
+    QString username = ui->lineEdit_username->text();
+    QString pwd = ui->lineEdit_pwd->text();
+    QString msg = "reg/" + username + ":" + pwd;
+    sendMsg(msg);
 }
